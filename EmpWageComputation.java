@@ -6,12 +6,16 @@ public class EmpWageComputation {
 	public static final int NUM_OF_WORKING_DAYS = 20;
 	public static final int MAX_HRS_IN_MONTH = 100;
 
+	public static int calTotalEmpWage( int totalEmpHrs )	{
+		return totalEmpHrs * EMP_RATE_PER_HOUR;
+	}
+
 	public static void main(String args[]) {
 		//VARIABLES
 		int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 		//COMPUTATION
 		while ( totalEmpHrs <= MAX_HRS_IN_MONTH &&
-					totalWorkingDays < NUM_OF_WORKING_DAYS )	{
+				totalWorkingDays < NUM_OF_WORKING_DAYS )	{
 			totalWorkingDays++;
 			int empCheck = (int) ( Math.random() * 10 ) % 3;
 			switch (empCheck)	{
@@ -27,7 +31,7 @@ public class EmpWageComputation {
 			totalEmpHrs += empHrs;
 			System.out.println("Day#: " + totalWorkingDays + " Emp Hr: " +  empHrs);
 		}
-		int totalEmpWage = totalEmpHrs * EMP_RATE_PER_HOUR;
+		int totalEmpWage = calTotalEmpWage( totalEmpHrs );
 		System.out.println("Total Emp Wage: " + totalEmpWage);
 	}
 }
