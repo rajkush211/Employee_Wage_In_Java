@@ -14,7 +14,7 @@ public class EmpWageComputation {
 	}
 
 	//COMPUTATION
-	public static int computeDailyHrs()	{
+	public static int computeTotalEmpHrs()	{
 		int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
 		while( totalEmpHrs <= MAX_HRS_IN_MONTH &&
 				totalWorkingDays < NUM_OF_WORKING_DAYS )  {
@@ -33,8 +33,9 @@ public class EmpWageComputation {
 			totalEmpHrs += empHrs;
 			System.out.println("Day#: " + totalWorkingDays + " Emp Hr: " +  empHrs);
 		}
-	return totalEmpHrs;
-}
+		return totalEmpHrs;
+	}
+
 	//CALCULATING TOTAL EMPLOYEE WAGE
 	public int calTotalEmpWage( int totalEmpHrs )	{
 		return totalEmpHrs * EMP_RATE_PER_HOUR;
@@ -44,12 +45,12 @@ public class EmpWageComputation {
 	public static void main(String args[]) {
 		//CREATING OBJECTS FOR COMPANY
 		EmpWageComputation bridgelabz = new EmpWageComputation( 20, 20, 100 );
-		int bridgelabzTotalEmpHrs = bridgelabz.computeDailyHrs();
+		int bridgelabzTotalEmpHrs = bridgelabz.computeTotalEmpHrs();
 		int totalBridgelabzEmpWage = bridgelabz.calTotalEmpWage( bridgelabzTotalEmpHrs );
 		System.out.println("Total Wage of Bridgelabz Employee: " + totalBridgelabzEmpWage);
 
 		EmpWageComputation google = new EmpWageComputation( 50, 15, 75 );
-		int googleTotalEmpHrs = google.computeDailyHrs();
+		int googleTotalEmpHrs = google.computeTotalEmpHrs();
 		int totalGoogleEmpWage = google.calTotalEmpWage( googleTotalEmpHrs );
 		System.out.println("Total Wage of Google Employee: " + totalGoogleEmpWage );
 	}
