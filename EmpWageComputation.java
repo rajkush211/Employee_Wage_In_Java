@@ -10,9 +10,12 @@ public class EmpWageComputation implements WageMethod	{
 	//CONSTANTS
 	public final int IS_PART_TIME = 1;
 	public final int IS_FULL_TIME = 2;
+
+	ArrayList<Integer> empDailyAndTotalWage = new ArrayList<Integer>();
+
 	//COMPUTATION
 	public void computeTotalEmpWage( CompanyEmpWage companyEmployee )	{
-		int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0;
+		int empHrs = 0, totalEmpHrs = 0, totalWorkingDays = 0, empDailyWage = 0, empTotalWage = 0;
 		while( totalEmpHrs <= companyEmployee.getMaxHrsInMonth() &&
 				totalWorkingDays < companyEmployee.getMaxNumOfWorkingDays() )  {
 			totalWorkingDays++;
@@ -28,9 +31,13 @@ public class EmpWageComputation implements WageMethod	{
 					empHrs = 0;
 			}
 			totalEmpHrs += empHrs;
+			empDailyWage = empHrs * companyEmployee.getEmpRatePerHour();
+			empDailyAndTotalWage.add( empDailyWage );
 			System.out.println("Day#: " + totalWorkingDays + " Emp Hr: " +  empHrs);
 		}
-		companyEmployee.setTotalEmpWage( totalEmpHrs * companyEmployee.getEmpRatePerHour() );
+		empTotalWage = totalEmpHrs * companyEmployee.getEmpRatePerHour();
+		empDailyAndTotalWage.add( empTotalWage );
+		companyEmployee.setTotalEmpWage( empTotalWage );
 		System.out.println("Total Wage of " + companyEmployee.getCompanyName() + " Employee is " + companyEmployee.getTotalEmpWage());
 	}
 
@@ -89,4 +96,3 @@ class CompanyEmpWage	{
 		return totalEmpWage;
    }
 }
-
