@@ -1,6 +1,8 @@
+import java.util.ArrayList;
+
 interface WageMethod	{
 
-	public void computeTotalEmpWage( CompanyEmpWage obj );
+	public void computeTotalEmpWage( CompanyEmpWage object );
 
 }
 
@@ -34,15 +36,17 @@ public class EmpWageComputation implements WageMethod	{
 
 	//MAIN
 	public static void main(String args[]) {
+
 		EmpWageComputation empwagecomputation = new EmpWageComputation();
-		//DECLARING ARRAY OF COMPANY EMPLOYEE WAGE OBJECT
-		CompanyEmpWage[] company = new CompanyEmpWage[2];
 
-		company[0] = new CompanyEmpWage( "BRIDGELABZ", 20, 20, 100 );
-		empwagecomputation.computeTotalEmpWage(company[0]);
+		//DECLARING ARRAYLIST OF COMPANY EMPLOYEE WAGE OBJECT
+		ArrayList<CompanyEmpWage> company = new ArrayList<CompanyEmpWage>();
 
-		company[1] = new CompanyEmpWage( "GOOGLE", 30, 20, 70 );
-		empwagecomputation.computeTotalEmpWage(company[1]);
+		company.add( new CompanyEmpWage( "BRIDGELABZ", 20, 20, 100 ));
+		empwagecomputation.computeTotalEmpWage(company.get(0));
+
+		company.add( new CompanyEmpWage( "GOOGLE", 30, 20, 70 ));
+		empwagecomputation.computeTotalEmpWage(company.get(1));
 	}
 }
 
